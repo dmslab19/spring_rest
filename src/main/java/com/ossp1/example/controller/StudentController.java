@@ -62,46 +62,13 @@ public class StudentController {
 	}
 	
 	
-	@RequestMapping(value = "/students/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<?> updateStudent(
-			@PathVariable("id") int id,
-			@RequestBody Student student) {
-		logger.info("Updating Student with id {}", id);
+	//@RequestMapping(value = "/students/{id}", method = RequestMethod.PUT)
+	//public ResponseEntity<?> updateStudent(
 
-		Student currentStudent = studentService.findById(id);
-
-		if (currentStudent == null) {
-			logger.error("Unable to update. Student with id {} not found.", id);
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-
-		currentStudent.setName(student.getName());
-		currentStudent.setEmail(student.getEmail());
-
-		studentService.update(currentStudent);
-		return new ResponseEntity<>(currentStudent, HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/students", method = RequestMethod.DELETE)
-	public ResponseEntity<Student> deleteAll() {
-		logger.info("Deleting All Students");
-
-		studentService.deleteAll();
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	}
+	//@RequestMapping(value = "/students", method = RequestMethod.DELETE)
+	//public ResponseEntity<Student> deleteAll() {
 	
-	@RequestMapping(value = "/students/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<?> deleteStudent(
-			@PathVariable("id") int id) {
-		logger.info("Fetching & Deleting Student with id {}", id);
-
-		Student student = studentService.findById(id);
-		if (student == null) {
-			logger.error("Unable to delete. Student with id {} not found.", id);
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-		studentService.deleteById(id);
-		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-	}
+	//@RequestMapping(value = "/students/{id}", method = RequestMethod.DELETE)
+	//public ResponseEntity<?> deleteStudent(
 
 }
